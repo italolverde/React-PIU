@@ -5,13 +5,14 @@ import './App.css'
 import Escopo from './componentes/Escopo'
 import Redux from './componentes/Redux'
 import MeuComponente from './componentes/MeuComponente'
+import Change from './componentes/Change'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <MeuComponente />
+      <Change />
     </>
   )
 }
