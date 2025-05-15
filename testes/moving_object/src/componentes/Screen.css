@@ -1,0 +1,12 @@
+#tela {
+    width: 854px;
+    height: 480px;
+    border: 4px solid black;
+}
+
+#objct {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: red;
+}
