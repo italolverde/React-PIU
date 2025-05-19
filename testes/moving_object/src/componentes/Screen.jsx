@@ -4,22 +4,25 @@ import React, { useEffect } from 'react';
 
 function Screen() {
 
-    const [posY,setPosY] = useState(0)
-    const gravidade = 2
-    function grav() {
-        setPosY((prev) => prev + 2)
-    }
+    const [position,setPosition] = useState( { top:100,left:100 } )
+    const handleKeyDown = (e) => {
+        console.log('aa')
+        setPosition((prev) => {
+            const step = 2
+            switch(e.key) {
+                case "w":
+                    return {...prev, top: prev.top - step}
+                default:
+                    return prev
+                }
+        })
+    } 
 
-    useEffect(() => {
-        if (posY + 1 < 480) {
-            const interval = setInterval(grav, 10); 
-            return () => clearInterval(interval);
-        } else { setPosY(posY+1)}
-     }, []);
+    window.addEventListener("keydown", handleKeyDown);
 
     return (
         <div id="tela">
-            <div style={{top: posY, position: 'relative'}} id="objct"></div>
+            <div style={{top:position.top,left:position.left,position: 'relative'}} id="objct"></div>
         </div>
     )
     }
