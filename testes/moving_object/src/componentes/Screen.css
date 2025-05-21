@@ -1,12 +1,14 @@
 #tela {
-    width: 854px;
-    height: 480px;
-    border: 4px solid black;
+    width: 400px;
+    height: 400px;
+    background-color: gray;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
-#objct {
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    background-color: red;
+.peca {
+    height: 130px;
+    width: 130px;
+    background-color: rgb(192, 192, 192);
 }
