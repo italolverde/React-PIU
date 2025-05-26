@@ -1,23 +1,12 @@
-import { useState } from "react";
 
-export default function Detalhes() {
 
-    const [nome,setNome] = useState(null)
-    const [imagem, setImagem] = useState(null)
-    const [descricao, setDescricao] = useState(null)
-
-    function changeselected(nome,imagem,descricao) {
-    
-        setNome(nome)
-        setImagem(imagem)
-        setDescricao(descricao)
-    }
+export default function Detalhes(perso) {
 
     return (
         <>
-            <h2>{nome}</h2>
-            <img src={imagem} />
-            <p>{descricao}</p>
+            <h2>{perso.nome}</h2>
+            <img src={perso.imagem} />
+            <p>{perso.descricao}</p>
         </>
     )
 }
