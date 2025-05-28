@@ -1,12 +1,15 @@
+import "./Detalhes.css"
 
-
-export default function Detalhes(perso) {
-
+export default function Detalhes({nome,imagem,descricao}) {
+    if (!nome) {
+        return(<></>)
+    }
+    
     return (
-        <>
-            <h2>{perso.nome}</h2>
-            <img src={perso.imagem} />
-            <p>{perso.descricao}</p>
-        </>
+        <div className="detalhes">
+            <h2>{nome}</h2>
+            <img src={imagem} />
+            <p>{descricao}</p>
+        </div>
     )
 }
