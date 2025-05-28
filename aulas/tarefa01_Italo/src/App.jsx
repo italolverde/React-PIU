@@ -4,20 +4,28 @@ import Tema from './componentes/Tema'
 import Card from './componentes/Card'
 import Galeria from './componentes/Galeria'
 import Detalhes from './componentes/Detalhes'
+import Switcher from './componentes/Switcher'
 
-import frisk from "./assets/frisk.jpg"
-import gon from "./assets/gon.webp"
-import kate from "./assets/kate.png"
-import luffy from "./assets/luffy.webp"
-import max from "./assets/max.png"
-import frieren from "./assets/frieren.png"
+import frisk from "./assets/protagonistas/frisk.jpg"
+import gon from "./assets/protagonistas/gon.webp"
+import kate from "./assets/protagonistas/kate.png"
+import luffy from "./assets/protagonistas/luffy.webp"
+import max from "./assets/protagonistas/max.png"
+import frieren from "./assets/protagonistas/frieren.png"
 
+import blue from "./assets/champions/blue.jpg"
+import lance from "./assets/champions/lance.png"
+import steven from "./assets/champions/steven.png"
+import wallace from "./assets/champions/wallace.jpg"
+import cynthia from "./assets/champions/cynthia.png"
+import iris from "./assets/champions/iris.jpg"
 
 function App() {
 
   const [personagemselecionado,setPersonagemselecionado] = useState(null)
+  const [tipopersonagem, setTipopersonagem] = useState("protagonistas")
 
-  const personagens = [
+  const protagonistas = [
     { nome: "Frisk", imagem: frisk, descricao: "Apenas uma criança. Protagonista do jogo Undertale" },
     { nome: "Gon Freecss", imagem: gon, descricao: "Um hunter que ta procurando o pai que foi comprar leite. Protagonista do anime Hunter x Hunter" },
     { nome: "Kate Shadow", imagem: kate, descricao: "Uma criança da familia Shadow. Protagonista do anime Shadows House" },
@@ -26,15 +34,33 @@ function App() {
     { nome: "Frieren ", imagem: frieren, descricao: "Uma maga elfa caçadora de demonios. Protagonista de Sousou no Frieren" },
   ]
 
+  const champions = [
+    { nome: "Blue Oak", imagem: blue, descricao: "Pesquisador pokemon e campeão da liga de Kanto"},
+    { nome: "Lance", imagem: lance, descricao: "Treinador de dragões campeão da liga de Johto e membro da Elite four de Kanto"},
+    { nome: "Steven Stone", imagem: steven, descricao: "Arqueólogo e campeão da liga de Hoenn"},
+    { nome: "wallace", imagem: wallace, descricao: "Campeão da liga de Hoenn"},
+    { nome: "Cynthia", imagem: cynthia, descricao: "Pesquisadora da mitologia pokemon e campeã da liga de Sinnoh"},
+    { nome: "Iris", imagem: iris, descricao: "Treinadora de dragões e nova campeã da liga de Unova"}
+  ]
+
   function selecionar(personagem) {
     setPersonagemselecionado(personagem)
     console.log(personagem.nome)
   }
 
+  function trocartipo() {
+    console.log(tipopersonagem)
+    if (tipopersonagem == "protagonistas") {
+      setTipopersonagem("champions")
+    } else {
+      setTipopersonagem("protagonistas")
+    }
+  }
   return (
     <>
       <Tema />
-      <Galeria personagens={personagens} trocapersonagem={selecionar} />     
+      <Switcher clickfunction={trocartipo} tipopersonagem={tipopersonagem} />
+      <Galeria protagonistas={protagonistas} champions={champions} trocapersonagem={selecionar} tipopersonagem={tipopersonagem} />     
       {personagemselecionado ? (
         <Detalhes nome={personagemselecionado.nome} imagem = {personagemselecionado.imagem} descricao={personagemselecionado.descricao} />
       ) : (
