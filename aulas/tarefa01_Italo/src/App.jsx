@@ -5,6 +5,8 @@ import Card from './componentes/Card'
 import Galeria from './componentes/Galeria'
 import Detalhes from './componentes/Detalhes'
 import Switcher from './componentes/Switcher'
+import Form from './componentes/Form'
+
 
 import frisk from "./assets/protagonistas/frisk.jpg"
 import gon from "./assets/protagonistas/gon.webp"
@@ -28,7 +30,7 @@ function App() {
   const protagonistas = [
     { nome: "Frisk", imagem: frisk, descricao: "Apenas uma criança. Protagonista do jogo Undertale" },
     { nome: "Gon Freecss", imagem: gon, descricao: "Um hunter que ta procurando o pai que foi comprar leite. Protagonista do anime Hunter x Hunter" },
-    { nome: "Kate Shadow", imagem: kate, descricao: "Uma criança da familia Shadow. Protagonista do anime Shadows House" },
+    { nome: "Brian Kevelyn", imagem: kate, descricao: "Uma criança da familia Shadow. Protagonista de Shadows House" },
     { nome: "Monkey D. Luffy", imagem: luffy, descricao: "O futuro rei dos piratas. Protagonista do anime One Piece" },
     { nome: "Max Caulfield", imagem: max, descricao: "Uma estudante com o poder de voltar no tempo. Protagonista do jogo Life is Strange" },
     { nome: "Frieren ", imagem: frieren, descricao: "Uma maga elfa caçadora de demonios. Protagonista de Sousou no Frieren" },
@@ -42,6 +44,13 @@ function App() {
     { nome: "Cynthia", imagem: cynthia, descricao: "Pesquisadora da mitologia pokemon e campeã da liga de Sinnoh"},
     { nome: "Iris", imagem: iris, descricao: "Treinadora de dragões e nova campeã da liga de Unova"}
   ]
+
+  const [userchars, setUserchars] = useState([])
+
+  function adduserchar(char) {
+    setUserchars([...userchars, char])
+    console.log(userchars)
+  }
 
   function selecionar(personagem) {
     setPersonagemselecionado(personagem)
@@ -58,6 +67,7 @@ function App() {
   }
   return (
     <>
+      <Form adcionar={adduserchar}/>
       <Tema />
       <Switcher clickfunction={trocartipo} tipopersonagem={tipopersonagem} />
       <Galeria protagonistas={protagonistas} champions={champions} trocapersonagem={selecionar} tipopersonagem={tipopersonagem} />     
