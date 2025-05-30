@@ -21,11 +21,18 @@ import steven from "./assets/champions/steven.png"
 import wallace from "./assets/champions/wallace.jpg"
 import cynthia from "./assets/champions/cynthia.png"
 import iris from "./assets/champions/iris.jpg"
+import Dropdown from './componentes/Dropdown'
 
 function App() {
 
   const [personagemselecionado,setPersonagemselecionado] = useState(null)
   const [tipopersonagem, setTipopersonagem] = useState("protagonistas")
+
+  const itensdropdown = [
+    "protagonistas",
+    "champions",
+    "userchars"
+  ]
 
   const protagonistas = [
     { nome: "Frisk", imagem: frisk, descricao: "Apenas uma criança. Protagonista do jogo Undertale" },
@@ -57,20 +64,16 @@ function App() {
     console.log(personagem.nome)
   }
 
-  function trocartipo() {
-    console.log(tipopersonagem)
-    if (tipopersonagem == "protagonistas") {
-      setTipopersonagem("champions")
-    } else {
-      setTipopersonagem("protagonistas")
-    }
+  function trocartipo(tipo) {
+    setTipopersonagem(tipo)
   }
+
   return (
     <>
       <Form adcionar={adduserchar}/>
       <Tema />
-      <Switcher clickfunction={trocartipo} tipopersonagem={tipopersonagem} />
-      <Galeria protagonistas={protagonistas} champions={champions} trocapersonagem={selecionar} tipopersonagem={tipopersonagem} />     
+      <Dropdown itensdropdown={itensdropdown} refreshchars={trocartipo} />
+      <Galeria protagonistas={protagonistas} champions={champions} userchars={userchars} trocapersonagem={selecionar} tipopersonagem={tipopersonagem} />     
       {personagemselecionado ? (
         <Detalhes nome={personagemselecionado.nome} imagem = {personagemselecionado.imagem} descricao={personagemselecionado.descricao} />
       ) : (
