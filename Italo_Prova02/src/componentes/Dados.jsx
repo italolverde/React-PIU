@@ -17,8 +17,7 @@ export default function Dados() {
                 const response = await fetch('https://jsonplaceholder.typicode.com/users'); 
                 const data = await response.json();
                 const usuarioespecifico = data.filter((usuario) => usuario.id === Number(id));
-                console.log('usuario especifico:')
-                console.log(usuarioespecifico)
+                console.log('usuario especifico:', usuarioespecifico)
                 setData(data);
             
                 
