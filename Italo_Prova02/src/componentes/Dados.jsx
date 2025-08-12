@@ -12,8 +12,6 @@ export default function Dados() {
     useEffect(() => {
         
         const fetchUsuarios = async () => {
-            console.log('rodou o useeffect')
-            console.log('aaaaaaaaaa')
 
             try {
                 const response = await fetch('https://jsonplaceholder.typicode.com/users'); 
